@@ -17,6 +17,7 @@ const RecipeListingPage = ({data}) => (
         recipeTitle={recipe.node.title}
         recipeSummary={recipe.node.field_summary.value}
         recipeImg={recipe.node.relationships.field_image.localFile.childImageSharp.fixed}
+        recipeSlug={recipe.node.fields.slug}
     />
     ) )}
   </Layout>
@@ -29,6 +30,9 @@ export const query = graphql`
         node {
           id
           title
+          fields {
+            slug
+          }
           created(formatString: "MMMM, Do, YYYY")
           field_summary {
             value
