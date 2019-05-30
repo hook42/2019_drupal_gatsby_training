@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby + Drupal 8`,
+    slogan: `A Match Made in Heaven`,
+    description: `A demo site made in our Gatsby + Drupal training session at Drupal Camp Chatanooga 2019!`,
+    author: `nerdstein`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -25,6 +26,13 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `https://d0s4q.ply.st`, // use your simplytest url here
+        apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
