@@ -1,21 +1,59 @@
 import React from "react"
+import {graphql} from "gatsby"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import RecipeTeaser from "../components/recipe-teaser.js"
 
-const IndexPage = () => (
+const RecipeListingPage = ({data}) => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <SEO title="Recipes" />
+    <h1>Recipes</h1>
+    { data.allNodeRecipe.edges.map((recipe) => (
+    <RecipeTeaser
+        key={recipe.node.id}
+        recipeDate={recipe.node.created}
+        recipeTitle={recipe.node.title}
+        recipeSummary={recipe.node.field_summary.value}
+        recipeImg={recipe.node.relationships.field_image.localFile.childImageSharp.fixed}
+        recipeSlug={recipe.node.fields.slug}
+    />
+    ) )}
   </Layout>
 )
 
-export default IndexPage
+export const query = graphql`
+ query RecipeQuery {
+    allNodeRecipe {
+      edges {
+        node {
+          id
+          title
+          fields {
+            slug
+          }
+          created(formatString: "MMMM, Do, YYYY")
+          field_summary {
+            value
+            format
+            processed
+          }
+          relationships {
+            field_image {
+              localFile {
+                childImageSharp {
+                  fixed(width: 125, height: 125) {
+                    ...GatsbyImageSharpFixed
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default RecipeListingPage
