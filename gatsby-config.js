@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `https://d082p.ply.st`, // use your simplytest url here
+        baseUrl: `https://d0s4q.ply.st`, // use your simplytest url here
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
