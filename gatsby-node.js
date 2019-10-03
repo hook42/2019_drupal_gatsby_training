@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 
-/*
+
 const path = require(`path`)
 const transliteration = require('transliteration')
 
@@ -67,4 +67,3 @@ exports.createPages = ({ actions, graphql }) => {
     )
   })
 }
-*/
