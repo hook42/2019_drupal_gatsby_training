@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Gatsby + Drupal 8`,
     slogan: `A Match Made in Heaven`,
-    description: `A demo site made in our Gatsby + Drupal training session at Drupal Camp Chatanooga 2019!`,
-    author: `nerdstein`,
+    description: `A demo site made in our Gatsby + Drupal training session at BADCamp 2019!`,
+    author: `@porkloin`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
